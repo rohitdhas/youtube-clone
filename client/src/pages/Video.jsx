@@ -132,9 +132,12 @@ const Video = () => {
         const channelRes = await axios.get(
           `/users/find/${videoRes.data.userId}`
         );
+
         setChannel(channelRes.data);
         dispatch(fetchSuccess(videoRes.data));
-      } catch (err) {}
+      } catch (err) {
+        console.log(err);
+      }
     };
     fetchData();
   }, [path, dispatch]);
@@ -156,7 +159,7 @@ const Video = () => {
   };
 
   //TODO: DELETE VIDEO FUNCTIONALITY
-
+  if (!currentVideo) return <></>;
   return (
     <Container>
       <Content>

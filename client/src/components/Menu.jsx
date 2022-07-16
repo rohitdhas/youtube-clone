@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import LamaTube from "../img/logo.png";
+import YouTube from "../img/logo.png";
 import HomeIcon from "@mui/icons-material/Home";
 import ExploreOutlinedIcon from "@mui/icons-material/ExploreOutlined";
 import SubscriptionsOutlinedIcon from "@mui/icons-material/SubscriptionsOutlined";
@@ -37,6 +37,7 @@ const Logo = styled.div`
   gap: 5px;
   font-weight: bold;
   margin-bottom: 25px;
+  font-size: 1.5rem;
 `;
 
 const Img = styled.img`
@@ -48,7 +49,8 @@ const Item = styled.div`
   align-items: center;
   gap: 20px;
   cursor: pointer;
-  padding: 7.5px 0px;
+  border-radius: 5px;
+  padding: 7.5px 5px;
 
   &:hover {
     background-color: ${({ theme }) => theme.soft};
@@ -90,8 +92,8 @@ const Menu = ({ darkMode, setDarkMode }) => {
       <Wrapper>
         <Link to="/" style={{ textDecoration: "none", color: "inherit" }}>
           <Logo>
-            <Img src={LamaTube} />
-            LamaTube
+            <Img src={YouTube} />
+            YouTube
           </Logo>
         </Link>
         <Item>
@@ -123,7 +125,7 @@ const Menu = ({ darkMode, setDarkMode }) => {
           History
         </Item>
         <Hr />
-        {!currentUser &&
+        {!currentUser && (
           <>
             <Login>
               Sign in to like videos, comment, and subscribe.
@@ -136,7 +138,7 @@ const Menu = ({ darkMode, setDarkMode }) => {
             </Login>
             <Hr />
           </>
-        }
+        )}
         <Title>BEST OF LAMATUBE</Title>
         <Item>
           <LibraryMusicOutlinedIcon />
