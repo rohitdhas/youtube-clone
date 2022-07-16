@@ -23,12 +23,31 @@ const Container = styled.div`
   flex: 1;
   background-color: ${({ theme }) => theme.bgLighter};
   height: 100vh;
+  overflow-y: scroll;
+  overflow-x: hidden;
   color: ${({ theme }) => theme.text};
   font-size: 14px;
   position: sticky;
   top: 0;
+
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #888;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
 `;
 const Wrapper = styled.div`
+  width: max-content;
   padding: 18px 26px;
 `;
 const Logo = styled.div`
@@ -96,10 +115,12 @@ const Menu = ({ darkMode, setDarkMode }) => {
             YouTube
           </Logo>
         </Link>
-        <Item>
-          <HomeIcon />
-          Home
-        </Item>
+        <Link to="/" style={{ textDecoration: "none", color: "inherit" }}>
+          <Item>
+            <HomeIcon />
+            Home
+          </Item>
+        </Link>
         <Link to="trends" style={{ textDecoration: "none", color: "inherit" }}>
           <Item>
             <ExploreOutlinedIcon />
@@ -139,7 +160,7 @@ const Menu = ({ darkMode, setDarkMode }) => {
             <Hr />
           </>
         )}
-        <Title>BEST OF LAMATUBE</Title>
+        <Title>BEST OF YOUTUBE</Title>
         <Item>
           <LibraryMusicOutlinedIcon />
           Music

@@ -23,7 +23,7 @@ const Wrapper = styled.div`
   position: relative;
 `;
 
-const Search = styled.div`
+const Search = styled.form`
   width: 40%;
   position: absolute;
   left: 0px;
@@ -40,6 +40,7 @@ const Search = styled.div`
 
 const Input = styled.input`
   border: none;
+  width: 90%;
   background-color: transparent;
   outline: none;
   color: ${({ theme }) => theme.text};
@@ -78,16 +79,23 @@ const Navbar = () => {
   const [open, setOpen] = useState(false);
   const [q, setQ] = useState("");
   const { currentUser } = useSelector((state) => state.user);
+
+  function onSubmit(e) {
+    e.preventDefault();
+    if (!q) return;
+    navigate(`/search?q=${q}`);
+  }
+
   return (
     <>
       <Container>
         <Wrapper>
-          <Search>
+          <Search onSubmit={(e) => onSubmit(e)}>
             <Input
               placeholder="Search"
               onChange={(e) => setQ(e.target.value)}
             />
-            <SearchOutlinedIcon onClick={() => navigate(`/search?q=${q}`)} />
+            <SearchOutlinedIcon onClick={(e) => onSubmit(e)} />
           </Search>
           {currentUser ? (
             <User>
