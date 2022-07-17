@@ -151,7 +151,7 @@ const Upload = ({ setOpen }) => {
         <Title>Upload a New Video</Title>
         <Label>Video:</Label>
         {videoPerc > 0 ? (
-          "Uploading:" + videoPerc
+          `Uploading: ${videoPerc}% Done`
         ) : (
           <Input
             type="file"
@@ -174,11 +174,11 @@ const Upload = ({ setOpen }) => {
         <Input
           type="text"
           placeholder="Separate the tags with commas."
-          onChance={handleTags}
+          onChange={handleTags}
         />
         <Label>Image:</Label>
         {imgPerc > 0 ? (
-          "Uploading:" + imgPerc + "%"
+          `Uploading: ${imgPerc}% Done`
         ) : (
           <Input
             type="file"
